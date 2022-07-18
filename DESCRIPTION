@@ -1,6 +1,6 @@
 Package: limmahelpers
 Type: Package
-Title: Helper Functions to Summarise and Visualise limma Results
+Title: Helper Functions to Summarise and Visualise limma::lmFit Results
 Version: 0.1.0
 Author: Eugene Slaughter
 Maintainer: Eugene Slaughter <eugene.slaughter1994@gmail.com>
@@ -19,3 +19,5 @@ Imports:
     plotly,
     tibble,
     tidyselect
+Depends: 
+    R (>= 2.10)

@@ -1,18 +1,16 @@
-#' Applying empirical Bayes moderation, formatting topTable results, and producing datatable of results
+#' Format topTable of lmFit contrast and display results in datatable
 #'
-#' @param fit an MArrayLM object produced by limma::lmFit or limma::contrasts.fit
-#' @param contrast column name specifying which contrast of the linear model is of interest
-#' @param cont.matrix numeric matrix with rows corresponding to coefficients in fit and columns containing contrasts
+#' @param fit An MArrayLM object produced by limma::lmFit or limma::contrasts.fit
+#' @param contrast String indicating the column name/contrast of interest from the linear model
 #'
-#' @return an HTML widget to display rectangular data using DT::datatable
+#' @return A HTML widget to display rectangular data
 #' @export
 #'
 #' @examples
-format_toptable <- function(fit, contrast, cont.matrix) {
-
-  fit2 <- limma::contrasts.fit(fit, cont.matrix)
-
-  fit2 <- limma::eBayes(fit2)
+#' design <- stats::model.matrix(~ 0 + grouping, coldata)
+#' fit <- limma::lmFit(metabolites, design)
+#' format_toptable(fit, contrast = "HFLVAD")
+format_toptable <- function(fit, contrast) {
 
   toptable <- limma::topTable(fit2, contrast, number = nrow(fit2)) |>
                 dplyr::mutate(FC = 2^logFC,
